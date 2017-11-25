@@ -1,0 +1,10 @@
+Source: wanparty-network-config
+Section: unknown
+Priority: extra
+Maintainer: Sohaib Lafifi <sohaib.lafifi@univ-artois.fr>
+Homepage: wanparty.neticien.net
+Package: wanparty-network-config
+Version: 1.2.17
+Architecture: all
+Depends: grub-common, grub2-common,  ntp, ntpdate, ssl-cert, conntrack, ethtool,tcpdump, iperf, iftop, wanparty-base, iptraf, nload, bmon, resolvconf
+Description: Configuration du reseau pour le server locale de la wan 

@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+case "$IFACE" in
+    lo)
+        # The loopback interface does not count.
+        # only run when some other interface comes up
+        exit 0
+        ;;
+    --all)
+        exit 0
+        ;;
+    *)
+        ;;
+esac
+/bin/date >>/var/log/wanparty/up-$IFACE.log
+## start /root/scripts/up-$IFACE.sh if exists
+[ -x /root/scripts/up-$IFACE.sh ] && /root/scripts/up-$IFACE.sh >> /var/log/wanparty/up-$IFACE.log 2>&1
+
