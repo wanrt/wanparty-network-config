@@ -35,6 +35,8 @@ case "$1" in
     echo "\n\nallow-hotplug eth0\niface eth0 inet dhcp\n\nallow-hotplug eth1\niface eth1 inet static\n\taddress 10.$DEPARTEMENT.0.1\n\tnetmask 255.255.0.0\n">>/etc/network/interfaces
     sysctl -p /etc/sysctl.d/wanparty-no_ipv6.conf
 
+    cp -rf /usr/share/wanparty/etc/* /etc/
+
     echo "config resolv.conf"
     echo "search wan.rt\nnameserver 127.0.0.1\n">/etc/resolv.conf
     if [ -f /etc/resolvconf/resolv.conf.d/head  ];

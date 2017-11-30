@@ -1,0 +1,2 @@
+# SUBSYSTEM=="net", DRIVERS=="?*", ATTR{address}=="01:23:45:67:89:ab", NAME="eth0"
+# SUBSYSTEM=="net", DRIVERS=="?*", ATTR{address}=="01:23:45:67:89:ab", NAME="eth1"
