@@ -46,12 +46,15 @@ case "$1" in
         cp -rfv /etc/resolvconf/resolv.conf.d/head.orig  /etc/resolvconf/resolv.conf.d/head 
     fi
     mkdir -p /etc/resolvconf/resolv.conf.d/
-    echo "search wan.rt\nnameserver 127.0.0.1\n">>/etc/resolvconf/resolv.conf.d/head 
+    echo "search wan.rt\nnameserver 127.0.0.1\n" > /etc/resolvconf/resolv.conf.d/head 
     echo "Config hostname"
     echo "R-$DEPARTEMENT">/etc/hostname
-    sed -i -e "s/localserver/R-$DEPARTEMENT/g" /etc/hosts
-
-    export HOSTNAME="R-DEPARTEMENT"
+    sed -i -e "s/127.0.1.1/# 127.0.1.1/g" /etc/hosts
+    #sed -i -e "s/localserver/R-$DEPARTEMENT/g" /etc/hosts
+    #sed -i -e "s/Host-001.lan/R-$DEPARTEMENT.wanrt/g" /etc/hosts
+    #sed -i -e "s/Host-001/R-$DEPARTEMENT/g" /etc/hosts
+    echo "127.0.1.1 R-$DEPARTEMENT.wan.rt R-$DEPARTEMENT" >> /etc/hosts
+    export HOSTNAME="R-$DEPARTEMENT"
     hostname -F /etc/hostname
     systemctl start networking
     systemctl start sshd
